@@ -18,9 +18,12 @@ public class adventDayA2015 {
       if(convert.equals(downFloor)){
         floor--;
       } //Going down a floor
+      if(floor == -1) {///If santa is in the basement for first time:
+        System.out.println(f + 1);///Print the position of ')' that caused him to go there.
+      }
     }//end the for loop
 
-    System.out.println("The floor is:" + floor);
+    System.out.println("Santa is on floor: " + floor);
   }//end main
   ///"(((" and "(()(()(" is Floor 3
   ///"))(((((" is Floor 3
