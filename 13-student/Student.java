@@ -5,12 +5,14 @@ class Student {
   private String name;
   private String osis;
   private int[] grades;
+  private int numGrades;
 
   //constructors
   public Student(String n, String o) {
     this.name = n;
     this.osis = o;
     grades = new int[10];
+    numGrades = 0;
   }
 
   //methods
@@ -41,13 +43,29 @@ class Student {
   }
 
   public void addGrade(int grade) {
-    int i = 0;
+    if (this.numGrades == 0) {
+      int lowestIndex = 0;
+      int lowestGrade = this.grades[0];
 
-    while (this.grades[i] != 0) {
-      i++;
+      for (int i = 1; i < this.grades.length; i++) {
+        if (this.grades[i] < lowestGrade) {
+          lowestIndex = i;
+          lowestGrade = this.grades[i];
+        }//end if statement
+      }//end for loop
+
+      //Replace (if grade is greater than lowest)
+      grades[lowestIndex] = grade;
+    }// end if statement
+
+    //if grade book wasn't full
+    else {
+      this.grades[this.numGrades] = grade;
+      this.numGrades++;
     }
 
-    this.grades[i] = grade;
+    this.grades[this.numGrades] = grade;
+    this.numGrades++;
   }//end AddGrade method
 
   public double calculateAverage() {
